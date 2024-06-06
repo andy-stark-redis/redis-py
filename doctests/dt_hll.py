@@ -1,4 +1,8 @@
 # # EXAMPLE: hll_tutorial
+"""
+Code samples for HyperLogLog doc pages:
+https://redis.io/docs/latest/develop/data-types/probabilistic/hyperloglogs/
+"""
 import redis
 
 # HIDE_START
@@ -27,5 +31,5 @@ print(res5)  # >>> 6
 # STEP_END
 
 # REMOVE_START
-assert res4 == True
+assert res4 is True
 # REMOVE_END

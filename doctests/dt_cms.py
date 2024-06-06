@@ -1,5 +1,9 @@
 # EXAMPLE: cms_tutorial
 # HIDE_START
+"""
+Code samples for Count-min sketch doc pages:
+https://redis.io/docs/latest/develop/data-types/probabilistic/count-min-sketch/
+"""
 import redis
 
 r = redis.Redis(decode_responses=True)

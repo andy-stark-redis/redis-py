@@ -1,5 +1,9 @@
 # EXAMPLE: stream_tutorial
 # HIDE_START
+"""
+Code samples for Stream doc pages:
+https://redis.io/docs/latest/develop/data-types/streams/
+"""
 import redis
 
 r = redis.Redis(decode_responses=True)
@@ -36,14 +40,14 @@ assert r.xlen("race:france") == 3
 res4 = r.xrange("race:france", "1691765278160-0", "+", 2)
 print(
     res4
-)  # >>> [('1692629576966-0', {'rider': 'Castilla', 'speed': '30.2', 'position': '1', 'location_id': '1'}), ('1692629594113-0', {'rider': 'Norem', 'speed': '28.8', 'position': '3', 'location_id': '1'})]
+)  # >>> [('1692629576966-0', {'rider': 'Castilla', 'speed': '30.2', ...
 # STEP_END
 
 # STEP_START xread_block
 res5 = r.xread(streams={"race:france": 0}, count=100, block=300)
 print(
     res5
-)  # >>> [['race:france', [('1692629576966-0', {'rider': 'Castilla', 'speed': '30.2', 'position': '1', 'location_id': '1'}), ('1692629594113-0', {'rider': 'Norem', 'speed': '28.8', 'position': '3', 'location_id': '1'}), ('1692629613374-0', {'rider': 'Prickett', 'speed': '29.7', 'position': '2', 'location_id': '1'})]]]
+)  # >>> [['race:france', [('1692629576966-0', {'rider': 'Castilla', ...
 # STEP_END
 
 # STEP_START xadd_2
@@ -84,28 +88,28 @@ except redis.exceptions.ResponseError as e:
 res11 = r.xrange("race:france", "-", "+")
 print(
     res11
-)  # >>> [('1692629576966-0', {'rider': 'Castilla', 'speed': '30.2', 'position': '1', 'location_id': '1'}), ('1692629594113-0', {'rider': 'Norem', 'speed': '28.8', 'position': '3', 'location_id': '1'}), ('1692629613374-0', {'rider': 'Prickett', 'speed': '29.7', 'position': '2', 'location_id': '1'}), ('1692629676124-0', {'rider': 'Castilla', 'speed': '29.9', 'position': '1', 'location_id': '2'})]
+)  # >>> [('1692629576966-0', {'rider': 'Castilla', 'speed': '30.2', ...
 # STEP_END
 
 # STEP_START xrange_time
 res12 = r.xrange("race:france", 1692629576965, 1692629576967)
 print(
     res12
-)  # >>> [('1692629576966-0', {'rider': 'Castilla', 'speed': '30.2', 'position': '1', 'location_id': '1'})]
+)  # >>> [('1692629576966-0', {'rider': 'Castilla', 'speed': '30.2', ...
 # STEP_END
 
 # STEP_START xrange_step_1
 res13 = r.xrange("race:france", "-", "+", 2)
 print(
     res13
-)  # >>> [('1692629576966-0', {'rider': 'Castilla', 'speed': '30.2', 'position': '1', 'location_id': '1'}), ('1692629594113-0', {'rider': 'Norem', 'speed': '28.8', 'position': '3', 'location_id': '1'})]
+)  # >>> [('1692629576966-0', {'rider': 'Castilla', 'speed': '30.2', ...
 # STEP_END
 
 # STEP_START xrange_step_2
 res14 = r.xrange("race:france", "(1692629594113-0", "+", 2)
 print(
     res14
-)  # >>> [('1692629613374-0', {'rider': 'Prickett', 'speed': '29.7', 'position': '2', 'location_id': '1'}), ('1692629676124-0', {'rider': 'Castilla', 'speed': '29.9', 'position': '1', 'location_id': '2'})]
+)  # >>> [('1692629613374-0', {'rider': 'Prickett', 'speed': '29.7', ...
 # STEP_END
 
 # STEP_START xrange_empty
@@ -117,14 +121,14 @@ print(res15)  # >>> []
 res16 = r.xrevrange("race:france", "+", "-", 1)
 print(
     res16
-)  # >>> [('1692629676124-0', {'rider': 'Castilla', 'speed': '29.9', 'position': '1', 'location_id': '2'})]
+)  # >>> [('1692629676124-0', {'rider': 'Castilla', 'speed': '29.9', ...
 # STEP_END
 
 # STEP_START xread
 res17 = r.xread(streams={"race:france": 0}, count=2)
 print(
     res17
-)  # >>> [['race:france', [('1692629576966-0', {'rider': 'Castilla', 'speed': '30.2', 'position': '1', 'location_id': '1'}), ('1692629594113-0', {'rider': 'Norem', 'speed': '28.8', 'position': '3', 'location_id': '1'})]]]
+)  # >>> [['race:france', [('1692629576966-0', {'rider': 'Castilla', ...
 # STEP_END
 
 # STEP_START xgroup_create
@@ -189,21 +193,21 @@ res24 = r.xreadgroup(
 )
 print(
     res24
-)  # >>> [['race:italy', [('1692629925789-0', {'rider': 'Royce'}), ('1692629925790-0', {'rider': 'Sam-Bodden'})]]]
+)  # >>> [['race:italy', [('1692629925789-0', {'rider': 'Royce'}), ...
 # STEP_END
 
 # STEP_START xpending
 res25 = r.xpending("race:italy", "italy_riders")
 print(
     res25
-)  # >>> {'pending': 2, 'min': '1692629925789-0', 'max': '1692629925790-0', 'consumers': [{'name': 'Bob', 'pending': 2}]}
+)  # >>> {'pending': 2, 'min': '1692629925789-0', 'max': '1692629925790-0', ...
 # STEP_END
 
 # STEP_START xpending_plus_minus
 res26 = r.xpending_range("race:italy", "italy_riders", "-", "+", 10)
 print(
     res26
-)  # >>> [{'message_id': '1692629925789-0', 'consumer': 'Bob', 'time_since_delivered': 31084, 'times_delivered': 1}, {'message_id': '1692629925790-0', 'consumer': 'Bob', 'time_since_delivered': 31084, 'times_delivered': 1}]
+)  # >>> [{'message_id': '1692629925789-0', 'consumer': 'Bob', ...
 # STEP_END
 
 # STEP_START xrange_pending
@@ -236,21 +240,21 @@ print(res30)  # >>> ['0-0', [('1692629925790-0', {'rider': 'Sam-Bodden'})]]
 res31 = r.xinfo_stream("race:italy")
 print(
     res31
-)  # >>> {'length': 5, 'radix-tree-keys': 1, 'radix-tree-nodes': 2, 'last-generated-id': '1692629926436-0', 'groups': 1, 'first-entry': ('1692629925771-0', {'rider': 'Castilla'}), 'last-entry': ('1692629926436-0', {'rider': 'Norem'})}
+)  # >>> {'length': 5, 'radix-tree-keys': 1, 'radix-tree-nodes': 2, ...
 # STEP_END
 
 # STEP_START xinfo_groups
 res32 = r.xinfo_groups("race:italy")
 print(
     res32
-)  # >>> [{'name': 'italy_riders', 'consumers': 2, 'pending': 2, 'last-delivered-id': '1692629925790-0'}]
+)  # >>> [{'name': 'italy_riders', 'consumers': 2, 'pending': 2, ...
 # STEP_END
 
 # STEP_START xinfo_consumers
 res33 = r.xinfo_consumers("race:italy", "italy_riders")
 print(
     res33
-)  # >>> [{'name': 'Alice', 'pending': 2, 'idle': 199332}, {'name': 'Bob', 'pending': 0, 'idle': 489170}]
+)  # >>> [{'name': 'Alice', 'pending': 2, 'idle': 199332}, ...
 # STEP_END
 
 # STEP_START maxlen
@@ -264,14 +268,14 @@ print(res34)  # >>> 8
 res35 = r.xrange("race:italy", "-", "+")
 print(
     res35
-)  # >>> [('1692629925771-0', {'rider': 'Castilla'}), ('1692629925789-0', {'rider': 'Royce'}), ('1692629925790-0', {'rider': 'Sam-Bodden'}), ('1692629925791-0', {'rider': 'Prickett'}), ('1692629926436-0', {'rider': 'Norem'}), ('1692630612602-0', {'rider': 'Jones'}), ('1692630641947-0', {'rider': 'Wood'}), ('1692630648281-0', {'rider': 'Henshaw'})]
+)  # >>> [('1692629925771-0', {'rider': 'Castilla'}), ('1692629925789-0' ...
 
 r.xadd("race:italy", {"rider": "Smith"}, maxlen=2, approximate=False)
 
 res36 = r.xrange("race:italy", "-", "+")
 print(
     res36
-)  # >>> [('1692630648281-0', {'rider': 'Henshaw'}), ('1692631018238-0', {'rider': 'Smith'})]
+)  # >>> [('1692630648281-0', {'rider': 'Henshaw'}), ('1692631018238-0', ...
 # STEP_END
 
 # STEP_START xtrim
@@ -288,7 +292,7 @@ print(res38)  # >>> 0
 res39 = r.xrange("race:italy", "-", "+")
 print(
     res39
-)  # >>> [('1692630648281-0', {'rider': 'Henshaw'}), ('1692631018238-0', {'rider': 'Smith'})]
+)  # >>> [('1692630648281-0', {'rider': 'Henshaw'}), ('1692631018238-0', ...
 
 res40 = r.xdel("race:italy", "1692631018238-0")
 print(res40)  # >>> 1

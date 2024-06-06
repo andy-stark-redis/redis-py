@@ -1,5 +1,9 @@
 # EXAMPLE: bf_tutorial
 # HIDE_START
+"""
+Code samples for Bloom filter doc pages:
+https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/
+"""
 import redis
 
 r = redis.Redis(decode_responses=True)

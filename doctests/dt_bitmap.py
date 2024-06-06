@@ -1,5 +1,9 @@
 # EXAMPLE: bitmap_tutorial
 # HIDE_START
+"""
+Code samples for Bitmap doc pages:
+https://redis.io/docs/latest/develop/data-types/bitmaps/
+"""
 import redis
 
 r = redis.Redis(decode_responses=True)

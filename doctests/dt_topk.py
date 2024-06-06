@@ -1,5 +1,9 @@
 # EXAMPLE: topk_tutorial
 # HIDE_START
+"""
+Code samples for List doc pages:
+https://redis.io/docs/latest/develop/data-types/probabilistic/lists/
+"""
 import redis
 
 r = redis.Redis(decode_responses=True)

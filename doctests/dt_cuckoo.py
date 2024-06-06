@@ -1,5 +1,9 @@
 # EXAMPLE: cuckoo_tutorial
 # HIDE_START
+"""
+Code samples for Cuckoo filter doc pages:
+https://redis.io/docs/latest/develop/data-types/probabilistic/cuckoo-filter/
+"""
 import redis
 
 r = redis.Redis(decode_responses=True)

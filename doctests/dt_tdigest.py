@@ -1,5 +1,9 @@
 # EXAMPLE: tdigest_tutorial
 # HIDE_START
+"""
+Code samples for t-digest doc pages:
+https://redis.io/docs/latest/develop/data-types/probabilistic/t-digest/
+"""
 import redis
 
 r = redis.Redis(decode_responses=True)

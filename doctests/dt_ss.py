@@ -1,5 +1,9 @@
 # EXAMPLE: ss_tutorial
 # HIDE_START
+"""
+Code samples for Sorted set doc pages:
+https://redis.io/docs/latest/develop/data-types/sorted-sets/
+"""
 import redis
 
 r = redis.Redis(decode_responses=True)
@@ -43,7 +47,10 @@ print(
 res6 = r.zrange("racer_scores", 0, -1, withscores=True)
 print(
     res6
-)  # >>> [('Ford', 6.0), ('Sam-Bodden', 8.0), ('Norem', 10.0), ('Royce', 10.0), ('Castilla', 12.0), ('Prickett', 14.0)]
+)  # >>> [
+#           ('Ford', 6.0), ('Sam-Bodden', 8.0), ('Norem', 10.0),
+#           ('Royce', 10.0), ('Castilla', 12.0), ('Prickett', 14.0)
+#  ]
 # STEP_END
 
 # STEP_START zrangebyscore

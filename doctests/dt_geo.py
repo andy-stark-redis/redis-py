@@ -1,5 +1,9 @@
 # EXAMPLE: geo_tutorial
 # HIDE_START
+"""
+Code samples for Geospatial doc pages:
+https://redis.io/docs/latest/develop/data-types/geospatial/
+"""
 import redis
 
 r = redis.Redis(decode_responses=True)

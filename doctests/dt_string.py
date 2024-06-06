@@ -1,5 +1,9 @@
 # EXAMPLE: set_tutorial
 # HIDE_START
+"""
+Code samples for String doc pages:
+https://redis.io/docs/latest/develop/data-types/strings/
+"""
 import redis
 
 r = redis.Redis(decode_responses=True)
@@ -13,7 +17,7 @@ print(res2)  # Deimos
 # STEP_END
 
 # REMOVE_START
-assert res1 == True
+assert res1 is True
 assert res2 == "Deimos"
 # REMOVE_END
 
@@ -26,8 +30,8 @@ print(res4)  # True
 # STEP_END
 
 # REMOVE_START
-assert res3 == None
-assert res4 == True
+assert res3 is None
+assert res4 is True
 # REMOVE_END
 
 # STEP_START mset
@@ -38,7 +42,7 @@ print(res6)  # ['Deimos', 'Ares', 'Vanth']
 # STEP_END
 
 # REMOVE_START
-assert res5 == True
+assert res5 is True
 assert res6 == ["Deimos", "Ares", "Vanth"]
 # REMOVE_END
 

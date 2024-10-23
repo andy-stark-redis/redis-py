@@ -6,15 +6,13 @@
 import redis
 
 r = redis.RedisCluster(
-    host='localhost',
-    port=6379,
+    host='redis-18141.c34428.eu-west-2-mz.ec2.cloud.rlrcp.com',
+    port=18141,
     decode_responses=True,
     ssl=True,
-    ssl_certfile="./redis_user.crt",
-    ssl_keyfile="./redis_user_private.key",
-    ssl_ca_certs="./redis_ca.pem",
-    username="yourUsername",
-    password="yourPassword",
+    ssl_ca_certs="/Users/andrew.stark/Documents/Repos/forks/redis-py/doctests/redis_ca.pem",
+    username="default",
+    password="d8gzw2azTFVSh0tTPDsvuzc2BDC1dOQN",
 )
 
 success = r.set('foo', 'bar')

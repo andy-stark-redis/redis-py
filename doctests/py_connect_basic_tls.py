@@ -6,17 +6,17 @@
 import redis
 
 r = redis.Redis(
-    host='localhost',
-    port=6379,
+    host='redis-14669.c338.eu-west-2-1.ec2.redns.redis-cloud.com',
+    port=14669,
     decode_responses=True,
     ssl=True,
-    ssl_certfile="./redis_user.crt",
-    ssl_keyfile="./redis_user_private.key",
-    ssl_ca_certs="./redis_ca.pem",
-    ssl_cert_reqs="required",
-    username="yourUsername",
-    password="yourPassword",
+    ssl_ca_certs="/Users/andrew.stark/Documents/Repos/forks/redis-py/doctests/redis_ca.pem",
+    username="default",
+    password="wtpet4pI5EgyJHyldPwR7xM7GaZB0EcG",
 )
+# REMOVE_START
+r.delete('foo')
+# REMOVE_END
 
 success = r.set('foo', 'bar')
 # True

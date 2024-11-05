@@ -6,16 +6,16 @@
 import redis
 
 r = redis.Redis(
-    host='redis-14669.c338.eu-west-2-1.ec2.redns.redis-cloud.com',
-    port=14669,
+    host='<host>',
+    port=<port>,
     decode_responses=True,
     ssl=True,
-    ssl_certfile="/Users/andrew.stark/Documents/Repos/forks/redis-py/doctests/redis-db-12592910.crt",
-    ssl_keyfile="/Users/andrew.stark/Documents/Repos/forks/redis-py/doctests/redis-db-12592910.key",
-    ssl_ca_certs="/Users/andrew.stark/Documents/Repos/forks/redis-py/doctests/redis_ca.pem",
+    ssl_certfile="<path_to_redis-db-xxxxxxxx.crt_file>",
+    ssl_keyfile="<path_to_redis-db-xxxxxxxx.key_file>",
+    ssl_ca_certs="<path_to_redis_ca.pem_file>",
     ssl_cert_reqs="required",
     username="default",
-    password="jj7hRGi1K22vop5IDFvAf8oyeeF98s4h",
+    password="<password>",
 )
 
 success = r.set('foo', 'bar')

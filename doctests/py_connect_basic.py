@@ -6,11 +6,11 @@
 import redis
 
 r = redis.Redis(
-    host='redis-13891.c34425.eu-west-2-mz.ec2.cloud.rlrcp.com',
-    port=13891,
+    host='<host>',
+    port=<port>,
     decode_responses=True,
     username="default",
-    password="wtpet4pI5EgyJHyldPwR7xM7GaZB0EcG",
+    password="<password>",
 )
 
 success = r.set('foo', 'bar')

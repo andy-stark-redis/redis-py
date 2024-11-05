@@ -6,13 +6,13 @@
 import redis
 
 r = redis.Redis(
-    host='redis-14669.c338.eu-west-2-1.ec2.redns.redis-cloud.com',
-    port=14669,
+    host='<host>',
+    port=<port>,
     decode_responses=True,
     ssl=True,
-    ssl_ca_certs="/Users/andrew.stark/Documents/Repos/forks/redis-py/doctests/redis_ca.pem",
+    ssl_ca_certs="<path_to_redis_ca.pem_file>",
     username="default",
-    password="wtpet4pI5EgyJHyldPwR7xM7GaZB0EcG",
+    password="<password>",
 )
 # REMOVE_START
 r.delete('foo')
